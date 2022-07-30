@@ -6,11 +6,9 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-    with open('ejemplo.xml', 'rb') as file:
+    with open('datos.xml', 'rb') as file:
         root = ET.fromstring(file.read())
         transform = ET.XSLT(ET.parse('hojaEstilos.xslt'))
-        # dom = transform(root)
-        # return ET.tostring(dom, pretty_print=True)
         return ET.tostring(transform(root), pretty_print=True)
 
 
